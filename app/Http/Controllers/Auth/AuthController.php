@@ -58,13 +58,17 @@ class AuthController extends Controller
             $user->save();
         }
 
-        return redirect("dashboard")->withSuccess('You have successfully logged in');
+        $data = ["subscription" => $user->braintree_plan, "active" => $user->braintree_active];
+
+        return redirect("dashboard", $data)->withSuccess('You have successfully logged in');
     }
 
     public function dashboard()
     {
         if(Auth::check()){
-            return view('dashboard');
+            $user = Auth::user();
+            $data = ["subscription" => $user->braintree_plan, "active" => $user->braintree_active];
+            return view('dashboard', $data);
         }
 
         return redirect("login")->withSuccess('Access denied');

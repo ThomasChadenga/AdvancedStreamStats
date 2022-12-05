@@ -17,12 +17,14 @@
                     </div>
                 </div>
 
+                @if ($subscription !== null && $active === true)
                 <div class="card">
                     <div class="card-header">Extended Stats</div>
                     <div class="card-body">
                         These are your subscribed stats.
                     </div>
                 </div>
+                @endif
 
                 <div class="card">
                     <div class="card-header">Subscribe To Our Monthly Subscription - $9.99</div>
