@@ -46,10 +46,15 @@
                 <div style="margin-bottom:-20px; margin-top:20px">
                     You are about to pay for a <strong>{{ $subscription }}</strong> subscription.
                 </div>
-                <div id="dropin-container"></div>
-                <button id="submit-button" class="button button--small button--green">Subscribe</button>
+                <form id="checkout-form" action="{{ route('checkout') }}" method="POST">
+                    @csrf
+                    <input type="hidden" id=payment_method_nonce" name="payment_method_nonce" />
+                    <div id="dropin-container"></div>
+                    <button id="submit-button" class="button button--small button--green">Subscribe</button>
+                </form>
                 <script>
                     var button = document.querySelector('#submit-button');
+                    var form = document.querySelector('#checkout-form');
 
                     braintree.dropin.create({
                         authorization: 'sandbox_5rsnksbh_cg2stbhtww9cpmt2',
@@ -58,6 +63,8 @@
                         button.addEventListener('click', function () {
                             instance.requestPaymentMethod(function (err, payload) {
                                 // Submit payload.nonce to your server
+                                document.querySelector("#payment_method_nonce").value = payload.nonce;
+                                form.submit();
                             });
                         })
                     });
