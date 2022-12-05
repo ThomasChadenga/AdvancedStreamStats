@@ -19,7 +19,7 @@
 
                 @if ($subscription !== null && $active === true)
                 <div class="card">
-                    <div class="card-header">Extended Stats</div>
+                    <div class="card-header">Subscribed Stats</div>
                     <div class="card-body">
                         These are your subscribed stats.
                     </div>

@@ -43,9 +43,7 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        $this->create($request->all());
-
-        $user = Auth::user();
+        $user = $this->create($request->all());
 
         // using your user id we will create a braintree id with same id
         $response = \Braintree\Customer::create([
@@ -60,7 +58,7 @@ class AuthController extends Controller
 
         $data = ["subscription" => $user->braintree_plan, "active" => $user->braintree_active];
 
-        return redirect("dashboard", $data)->withSuccess('You have successfully logged in');
+        return redirect("dashboard")->with($data)->withSuccess('You have successfully logged in');
     }
 
     public function dashboard()
