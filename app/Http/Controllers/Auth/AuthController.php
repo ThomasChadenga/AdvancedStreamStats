@@ -45,6 +45,19 @@ class AuthController extends Controller
 
         $this->create($request->all());
 
+        $user = Auth::user();
+
+        // using your user id we will create a braintree id with same id
+        $response = \Braintree_Customer::create([
+            'id' => $user->id
+        ]);
+
+        // save your braintree id
+        if( $response->success) {
+            $user->braintree_id = $response->customer->id;
+            $user->save();
+        }
+
         return redirect("dashboard")->withSuccess('You have successfully logged in');
     }
 
