@@ -19,5 +19,3 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->post('subscribe/monthly', [SubscriptionController::class, 'monthly'])->name('subscribe.monthly');
-Route::middleware('auth:sanctum')->post('subscribe/yearly', [SubscriptionController::class, 'yearly'])->name('subscribe.yearly');

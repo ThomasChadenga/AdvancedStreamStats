@@ -48,7 +48,7 @@ class AuthController extends Controller
         $user = Auth::user();
 
         // using your user id we will create a braintree id with same id
-        $response = \Braintree_Customer::create([
+        $response = \Braintree\Customer::create([
             'id' => $user->id
         ]);
 

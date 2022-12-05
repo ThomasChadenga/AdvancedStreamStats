@@ -46,6 +46,10 @@
             margin-left: 0;
             margin-right: 0;
         }
+        .card
+        {
+            margin: 40px 0;
+        }
     </style>
 </head>
 <body>

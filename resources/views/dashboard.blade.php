@@ -28,9 +28,9 @@
                     <div class="card-header">Subscribe To Our Monthly Subscription - $9.99</div>
                     <div class="card-body">
 
-                        <form action="{{ route('subscribe.monthly') }}" method="POST">
+                        <form action="{{ route('subscribe') }}" method="POST">
                             @csrf
-                            <input type="hidden" id="monthly" class="form-control" name="monthly" value="1" required>
+                            <input type="hidden" id="subscribe" class="form-control" name="subscribe" value="monthly" required>
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary green">
                                     Monthly Subscription
@@ -45,12 +45,28 @@
                     <div class="card-header">Subscribe To Our Yearly Subscription - $99.99</div>
                     <div class="card-body">
 
-                        <form action="{{ route('subscribe.yearly') }}" method="POST">
+                        <form action="{{ route('subscribe') }}" method="POST">
                             @csrf
-                            <input type="hidden" id="yearly" class="form-control" name="yearly" value="1" required>
+                            <input type="hidden" id="subscribe" class="form-control" name="subscribe" value="yearly" required>
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary green">
                                     Yearly Subscription
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">Cancel Your Subscription</div>
+                    <div class="card-body">
+
+                        <form action="{{ route('cancel') }}" method="POST">
+                            @csrf
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary green">
+                                    Cancel Subscription
                                 </button>
                             </div>
                         </form>
