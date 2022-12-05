@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SubscriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->post('subscribe/monthly', [SubscriptionController::class, 'monthly'])->name('subscribe.monthly');
+Route::middleware('auth:sanctum')->post('subscribe/yearly', [SubscriptionController::class, 'yearly'])->name('subscribe.yearly');
